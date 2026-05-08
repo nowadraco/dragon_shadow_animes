@@ -1,0 +1,90 @@
+.spoiler-blur {
+  background-color: #2d3436; /* Esconde o fundo */
+  color: #2d3436;            /* Esconde as letras */
+  cursor: pointer;           /* Mostra que é clicável */
+  filter: blur(4px);         /* Faz o efeito borrado */
+  transition: all 0.4s ease; /* Faz aparecer suavemente */
+  user-select: none;         /* Impede de copiar enquanto está borrado */
+  display: inline;           /* Para funcionar no meio de frases */
+}
+
+/* Quando você clica, o JavaScript adiciona esta classe: */
+.spoiler-blur.revealed {
+  background-color: rgba(0, 206, 201, 0.1); 
+  color: #000000;
+  filter: blur(0);           /* Remove o borrão */
+  user-select: text;         /* Permite copiar o texto */
+}
+
+<p>
+  O grande segredo é que 
+  <span class="spoiler-blur" onclick="this.classList.toggle('revealed')">
+    a magia é feita apenas com desenhos e tinta.
+  </span>
+</p>
+
+<div class="spoiler-wrapper">
+  <span class="spoiler-warning">ALERTA DE SPOILER</span>
+  
+  <div class="spoiler-blur" onclick="this.classList.toggle('revealed')">
+    <p>Aqui você coloca todo o texto que quer esconder.</p>
+    <p>Pode ter várias linhas e até listas dentro.</p>
+  </div>
+</div>
+
+Aqui está a estrutura exata que você deve usar dentro do seu HTML para que o efeito funcione. Como você está usando o Blogger, você pode colar isso direto no modo de edição "Visualização em HTML".
+
+1. O Código CSS (Coloque entre as tags <style>)
+Este é o estilo que define como o borrão se comporta. Você só precisa colocar isso uma vez no topo do seu post.
+
+CSS
+.spoiler-blur {
+  background-color: #2d3436; /* Esconde o fundo */
+  color: #2d3436;            /* Esconde as letras */
+  cursor: pointer;           /* Mostra que é clicável */
+  filter: blur(4px);         /* Faz o efeito borrado */
+  transition: all 0.4s ease; /* Faz aparecer suavemente */
+  user-select: none;         /* Impede de copiar enquanto está borrado */
+  display: inline;           /* Para funcionar no meio de frases */
+}
+
+/* Quando você clica, o JavaScript adiciona esta classe: */
+.spoiler-blur.revealed {
+  background-color: rgba(0, 206, 201, 0.1); 
+  color: #000000;
+  filter: blur(0);           /* Remove o borrão */
+  user-select: text;         /* Permite copiar o texto */
+}
+2. O Código HTML (Onde o texto entra)
+Para aplicar o efeito em um texto, você usa a tag <span> (para frases) ou <div> (para blocos maiores) com o comando onclick.
+
+Exemplo para uma frase curta:
+
+HTML
+<p>
+  O grande segredo é que 
+  <span class="spoiler-blur" onclick="this.classList.toggle('revealed')">
+    a magia é feita apenas com desenhos e tinta.
+  </span>
+</p>
+Exemplo para um bloco inteiro (como você está usando):
+
+HTML
+<div class="spoiler-wrapper">
+  <span class="spoiler-warning">ALERTA DE SPOILER</span>
+  
+  <div class="spoiler-blur" onclick="this.classList.toggle('revealed')">
+    <p>Aqui você coloca todo o texto que quer esconder.</p>
+    <p>Pode ter várias linhas e até listas dentro.</p>
+  </div>
+</div>
+Por que usar o onclick no HTML?
+Eu usei o this.classList.toggle('revealed') porque ele é a forma mais simples de fazer isso sem precisar criar um arquivo .js separado.
+
+this: Refere-se exatamente ao elemento que você clicou.
+
+classList: Acessa as classes daquele elemento.
+
+toggle: Funciona como um interruptor. Se a classe revealed não estiver lá, ele coloca. Se você clicar de novo, ele tira (e o texto volta a ficar borrado).
+
+Isso facilita muito a sua vida no Blogger, já que você resolve tudo dentro da própria tag! Ficou fácil de aplicar aí nos seus blocos?
